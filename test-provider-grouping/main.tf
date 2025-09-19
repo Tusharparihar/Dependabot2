@@ -15,7 +15,7 @@ terraform {
     # Azure API (newer provider)
     azapi = {
       source  = "azure/azapi" 
-      version = "~> 1.9.0"   # Old version to force update
+      version = "~> 2.6.1"   # Old version to force update
     }
   }
 }
