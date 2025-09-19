@@ -1,24 +1,13 @@
 version: 2
 updates:
-  # Test WITHOUT grouping (your existing setup)
   - package-ecosystem: "terraform"
-    directory: "/test-multiple-providers"
+    directory: "/"   # root of your repo
     schedule:
       interval: "daily"
-  
-  # Test WITH grouping (new test)
-  - package-ecosystem: "terraform"  
-    directory: "/test-provider-grouping"
-    schedule:
-      interval: "daily"
-    
-    # GROUP CONFIGURATION - This is what we're testing!
     groups:
-      azure-providers:
-        patterns: 
-          - "hashicorp/azurerm"
-          - "hashicorp/azuread" 
-          - "azure/azapi"
+      all-providers:
+        patterns:
+          - "*"      # matches all Terraform providers
         update-types:
           - "minor"
           - "patch"
