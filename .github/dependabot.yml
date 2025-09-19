@@ -1,41 +1,24 @@
 version: 2
 updates:
+  # Test WITHOUT grouping (your existing setup)
   - package-ecosystem: "terraform"
-    directory: "/test-exact-version"
+    directory: "/test-multiple-providers"
+    schedule:
+      interval: "daily"
+  
+  # Test WITH grouping (new test)
+  - package-ecosystem: "terraform"  
+    directory: "/test-provider-grouping"
     schedule:
       interval: "daily"
     
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-pessimistic-version"
-  #   schedule:
-  #     interval: "daily"
-    
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-pessimistic-minor"
-  #   schedule:
-  #     interval: "daily"
-    
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-range-version"
-  #   schedule:
-  #     interval: "daily"
-    
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-gte-version"
-  #   schedule:
-  #     interval: "daily"
-    
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-no-constraint"
-  #   schedule:
-  #     interval: "daily"
-    
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-required-version"
-  #   schedule:
-  #     interval: "daily"
-    
-  # - package-ecosystem: "terraform"
-  #   directory: "/test-multiple-providers"
-  #   schedule:
-  #     interval: "daily"
+    # GROUP CONFIGURATION - This is what we're testing!
+    groups:
+      azure-providers:
+        patterns: 
+          - "hashicorp/azurerm"
+          - "hashicorp/azuread" 
+          - "azure/azapi"
+        update-types:
+          - "minor"
+          - "patch"
