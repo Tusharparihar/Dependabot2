@@ -3,7 +3,7 @@ terraform {
     # Azure Resource Manager
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.80.0"  # Old version to force update
+      version = "~> 4.45.0"  # Old version to force update
     }
     
     # Azure Active Directory  
