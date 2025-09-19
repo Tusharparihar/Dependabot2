@@ -9,7 +9,7 @@ terraform {
     # Azure Active Directory  
     azuread = {
       source  = "hashicorp/azuread"
-      version = "~> 2.45.0"  # Old version to force update
+      version = "~> 3.5.0"  # Old version to force update
     }
     
     # Azure API (newer provider)
